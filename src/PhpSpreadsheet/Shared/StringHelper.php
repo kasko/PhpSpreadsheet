@@ -464,7 +464,7 @@ class StringHelper
      */
     public static function countCharacters($value, $enc = 'UTF-8')
     {
-        return mb_strlen($value, $enc);
+        return mb_strlen("$value", $enc);
     }
 
     /**
@@ -502,7 +502,7 @@ class StringHelper
      */
     public static function strToLower($pValue)
     {
-        return mb_convert_case($pValue, MB_CASE_LOWER, 'UTF-8');
+        return mb_convert_case("$pValue", MB_CASE_LOWER, 'UTF-8');
     }
 
     /**
