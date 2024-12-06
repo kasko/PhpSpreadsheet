@@ -744,7 +744,7 @@ class LookupRef
         $firstColumn = array_shift($columnKeys);
 
         if (!$not_exact_match) {
-            uasort($lookup_array, ['self', 'vlookupSort']);
+            uasort($lookup_array, [static::class, 'vlookupSort']);
         }
 
         $lookupLower = StringHelper::strToLower($lookup_value);
