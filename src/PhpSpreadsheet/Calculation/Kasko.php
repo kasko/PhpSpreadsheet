@@ -24,7 +24,7 @@ class Kasko
         $num       = Functions::flattenSingleValue($num);
         $precision = Functions::flattenSingleValue($precision);
 
-        return round((float) $num, $precision);
+        return round((float) $num, (int) $precision);
     }
 
     /**
