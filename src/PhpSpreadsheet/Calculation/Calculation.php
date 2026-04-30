@@ -1487,8 +1487,8 @@ class Calculation
         ],
         'INDEX' => [
             'category' => Category::CATEGORY_LOOKUP_AND_REFERENCE,
-            'functionCall' => [LookupRef\Matrix::class, 'index'],
-            'argumentCount' => '2-4',
+            'functionCall' => [Kasko::class, 'INDEX'],
+            'argumentCount' => '1-4',
         ],
         'INDIRECT' => [
             'category' => Category::CATEGORY_LOOKUP_AND_REFERENCE,
@@ -2239,7 +2239,7 @@ class Calculation
         ],
         'ROUND' => [
             'category' => Category::CATEGORY_MATH_AND_TRIG,
-            'functionCall' => [MathTrig\Round::class, 'round'],
+            'functionCall' => [Kasko::class, 'ROUND'],
             'argumentCount' => '2',
         ],
         'ROUNDBAHTDOWN' => [

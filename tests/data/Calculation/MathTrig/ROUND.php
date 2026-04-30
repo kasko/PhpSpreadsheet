@@ -18,12 +18,12 @@ return [
     [5.20, '2.26 + 2.941, 2'],
     [-4.44, '-4.4400, 2'],
     [-5.20, '-2.26 - 2.94, 2'],
-    ['#VALUE!', '"ABC", 1'],
-    ['#VALUE!', '1.234, "ABC"'],
+    [0, '"ABC", 1'], // Kasko BC: lenient (float) cast on non-numeric input
+    [1, '1.234, "ABC"'], // Kasko BC: lenient (int) cast on non-numeric precision
     [0, ', 0'],
     [0, 'false, 0'],
     [1, 'true, 0'],
-    ['#VALUE!', '"", 0'],
+    [0, '"", 0'], // Kasko BC: empty string casts to 0.0
     [1, 'A2, 0'],
     [3, 'A3, 0'],
     [-4, 'A4, 0'],

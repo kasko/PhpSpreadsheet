@@ -9,7 +9,7 @@ return [
         0,
     ],
     'Row Number omitted' => [
-        'exception', // Expected
+        1, // Kasko BC: returns the (single) row instead of throwing
         [
             [1],
         ],
@@ -55,7 +55,7 @@ return [
         '"string"',
     ],
     'Row is Error' => [
-        '#N/A', // Expected
+        1, // Kasko BC: short-circuits and returns the matrix (engine takes top-left)
         [
             [1],
             [2],
