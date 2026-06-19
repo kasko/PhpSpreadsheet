@@ -2503,14 +2503,16 @@ class Worksheet implements IComparable
         $maxCol = Coordinate::stringFromColumnIndex($rangeEnd[0]);
         $maxRow = $rangeEnd[1];
 
-        ++$maxCol;
+        // PHP 8.5: avoid increment on non-numeric string, use column helper instead
+        $maxCol = Coordinate::stringFromColumnIndex(Coordinate::columnIndexFromString($maxCol) + 1);
         // Loop through rows
         $r = -1;
         for ($row = $minRow; $row <= $maxRow; ++$row) {
             $rRef = $returnCellRef ? $row : ++$r;
             $c = -1;
             // Loop through columns in the current row
-            for ($col = $minCol; $col != $maxCol; ++$col) {
+            // PHP 8.5: avoid increment on non-numeric string, use column helper instead
+            for ($col = $minCol; $col != $maxCol; $col = Coordinate::stringFromColumnIndex(Coordinate::columnIndexFromString($col) + 1)) {
                 $cRef = $returnCellRef ? $col : ++$c;
                 //    Using getCell() will create a new cell if it doesn't already exist. We don't want that to happen
                 //        so we test and retrieve directly against cellCollection
