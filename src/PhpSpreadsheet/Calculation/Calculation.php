@@ -2861,7 +2861,8 @@ class Calculation
      */
     public function renameCalculationCacheForWorksheet($fromWorksheetName, $toWorksheetName): void
     {
-        if (isset($this->calculationCache[$fromWorksheetName])) {
+        // PHP 8.5: avoid using null as an array offset, coerce to empty string instead
+        if (isset($this->calculationCache[$fromWorksheetName ?? ''])) {
             $this->calculationCache[$toWorksheetName] = &$this->calculationCache[$fromWorksheetName];
             unset($this->calculationCache[$fromWorksheetName]);
         }

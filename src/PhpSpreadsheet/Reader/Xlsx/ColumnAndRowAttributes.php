@@ -137,8 +137,9 @@ class ColumnAndRowAttributes extends BaseParserClass
         foreach ($worksheetCols->col as $column) {
             $startColumn = Coordinate::stringFromColumnIndex((int) $column['min']);
             $endColumn = Coordinate::stringFromColumnIndex((int) $column['max']);
-            ++$endColumn;
-            for ($columnAddress = $startColumn; $columnAddress !== $endColumn; ++$columnAddress) {
+            // PHP 8.5: avoid increment on non-numeric string, use column helper instead
+            $endColumn = Coordinate::stringFromColumnIndex(Coordinate::columnIndexFromString($endColumn) + 1);
+            for ($columnAddress = $startColumn; $columnAddress !== $endColumn; $columnAddress = Coordinate::stringFromColumnIndex(Coordinate::columnIndexFromString($columnAddress) + 1)) {
                 $columnAttributes[$columnAddress] = $this->readColumnRangeAttributes($column, $readDataOnly);
 
                 if ((int) ($column['max']) == 16384) {
